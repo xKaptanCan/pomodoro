@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="focus">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A beautiful, offline-capable Pomodoro Timer PWA to boost your productivity">
+    <meta name="theme-color" content="#FF6B6B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Pomodoro Timer</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/v2-components.css">
+</head>
+
+<body>
+    <!-- Main App Layout -->
+    <div class="app-layout" id="appLayout">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <span class="logo">🍅</span>
+                <h1 class="app-title" data-i18n="appTitle">Pomodoro Timer</h1>
+            </div>
+            <div class="header-right">
+                <button class="icon-btn" id="langToggle" title="Language">
+                    <span id="currentLang">EN</span>
+                </button>
+                <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button class="icon-btn" id="settingsBtn" title="Settings">⚙️</button>
+                <button class="icon-btn" id="statsBtn" title="Statistics">📊</button>
+                <button class="icon-btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
+            </div>
+        </header>
+
+        <!-- 3-Panel Main Content -->
+        <main class="main-grid">
+
+            <!-- LEFT PANEL - Stats & Progress -->
+            <aside class="side-panel left-panel" id="leftPanel">
+                <button class="panel-toggle" id="leftPanelToggle" title="Toggle Panel">
+                    <svg class="toggle-arrow" viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <div class="panel-content">
+                    <!-- Today's Stats -->
+                    <div class="panel-section">
+                        <h3 class="panel-title">📊 <span data-i18n="todayStats">Bugünkü İstatistik</span></h3>
+                        <div class="mini-stats">
+                            <div class="mini-stat">
+                                <span class="mini-stat-value" id="todayPomodoros">0</span>
+                                <span class="mini-stat-label">Pomodoro</span>
+                            </div>
+                            <div class="mini-stat">
+                                <span class="mini-stat-value" id="todayMinutes">0</span>
+                                <span class="mini-stat-label">dk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Daily Goal Progress -->
+                    <div class="panel-section">
+                        <h3 class="panel-title">🎯 <span data-i18n="dailyGoal">Günlük Hedef</span></h3>
+                        <div class="goal-progress">
+                            <div class="goal-bar">
+                                <div class="goal-fill" id="goalFill" style="width: 0%"></div>
+                            </div>
+                            <span class="goal-text" id="goalText">0/8</span>
+                        </div>
+                    </div>
+
+                    <!-- Recent Achievements -->
+                    <div class="panel-section">
+                        <h3 class="panel-title">🏆 <span data-i18n="achievements">Başarılar</span></h3>
+                        <div class="mini-achievements" id="miniAchievements">
+                            <span class="achievement-badge locked">🔒</span>
+                            <span class="achievement-badge locked">🔒</span>
+                            <span class="achievement-badge locked">🔒</span>
+                        </div>
+                    </div>
+
+                    <!-- Week Summary -->
+                    <div class="panel-section">
+                        <h3 class="panel-title">📅 <span data-i18n="thisWeek">Bu Hafta</span></h3>
+                        <div class="week-dots" id="weekDots">
+                            <div class="week-day" data-day="Pzt">
+                                <div class="day-fill"></div>
+                            </div>
+                            <div class="week-day" data-day="Sal">
+                                <div class="day-fill"></div>
+                            </div>
+                            <div class="week-day" data-day="Çar">
+                                <div class="day-fill"></div>
+                            </div>
+                            <div class="week-day" data-day="Per">
+                                <div class="day-fill"></div>
+                            </div>
+                            <div class="week-day" data-day="Cum">
+                                <div class="day-fill"></div>
+                            </div>
+                            <div class="week-day" data-day="Cmt">
+                                <div class="day-fill"></div>
+                            </div>
+                            <div class="week-day" data-day="Paz">
+                                <div class="day-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CENTER - Timer -->
+            <section class="timer-center" id="timerCenter">
+                <!-- Timer Circle -->
+                <div class="timer-container">
+                    <svg class="timer-svg" viewBox="0 0 200 200" style="overflow: visible;">
+                        <circle class="timer-bg" cx="100" cy="100" r="90" />
+                        <circle class="timer-progress" cx="100" cy="100" r="90" />
+                    </svg>
+                    <div class="timer-display">
+                        <span class="timer-time" id="timerDisplay">25:00</span>
+                        <span class="timer-label" id="timerLabel" data-i18n="focusTime">ODAKLANMA ZAMANI</span>
+                    </div>
+                </div>
+
+                <!-- Mode Selector -->
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="focus">
+                        <span class="mode-icon">🧠</span>
+                        <span data-i18n="focus">Odaklan</span>
+                    </button>
+                    <button class="mode-btn" data-mode="shortBreak">
+                        <span class="mode-icon">☕</span>
+                        <span data-i18n="shortBreak">Kısa Mola</span>
+                    </button>
+                    <button class="mode-btn" data-mode="longBreak">
+                        <span class="mode-icon">🌴</span>
+                        <span data-i18n="longBreak">Uzun Mola</span>
+                    </button>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="control-btn primary" id="startBtn">
+                        <span class="btn-icon">▶</span>
+                        <span data-i18n="start">BAŞLAT</span>
+                    </button>
+                    <button class="control-btn secondary" id="resetBtn">
+                        <span class="btn-icon">⟳</span>
+                        <span data-i18n="reset">SIFIRLA</span>
+                    </button>
+                </div>
+
+                <div class="controls-extra">
+                    <button class="control-btn secondary" id="mainFullscreenBtn">
+                        <span class="btn-icon">⛶</span>
+                        <span data-i18n="fullscreen">TAM EKRAN</span>
+                    </button>
+                </div>
+
+                <!-- Session Tracker -->
+                <div class="session-tracker">
+                    <div class="session-dots" id="sessionDots"></div>
+                    <span class="session-count" id="sessionCount">0/8</span>
+                </div>
+            </section>
+
+            <!-- RIGHT PANEL - Notes & Settings -->
+            <aside class="side-panel right-panel" id="rightPanel">
+                <button class="panel-toggle" id="rightPanelToggle" title="Toggle Panel">
+                    <svg class="toggle-arrow" viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <div class="panel-content">
+                    <!-- Task Manager -->
+                    <div class="panel-section">
+                        <h3 class="panel-title">✅ <span data-i18n="tasks">Görevler</span></h3>
+                        <div class="task-input-container">
+                            <input type="text" id="newTaskInput" class="task-input" placeholder="Yeni görev ekle..."
+                                data-i18n-placeholder="addTaskPlaceholder">
+                            <button id="addTaskBtn" class="add-task-btn">+</button>
+                        </div>
+                        <div id="taskList" class="task-list">
+                            <!-- Tasks will be injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Ambient Sounds -->
+                    <div class="panel-section">
+                        <h3 class="panel-title">🎧 <span data-i18n="ambientSounds">Atmosfer</span></h3>
+                        <div id="ambientControls" class="ambient-controls">
+                            <!-- Sounds will be injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Settings -->
+                    <div class="panel-section">
+                        <h3 class="panel-title">⚙️ <span data-i18n="quickSettings">Hızlı Ayarlar</span></h3>
+                        <div class="quick-settings">
+                            <div class="quick-setting">
+                                <label>Odaklanma</label>
+                                <div class="time-adjuster">
+                                    <button class="adj-btn" data-target="focus" data-delta="-5">-</button>
+                                    <span id="quickFocusTime">25</span>
+                                    <button class="adj-btn" data-target="focus" data-delta="5">+</button>
+                                </div>
+                            </div>
+                            <div class="quick-setting">
+                                <label>Kısa Mola</label>
+                                <div class="time-adjuster">
+                                    <button class="adj-btn" data-target="short" data-delta="-1">-</button>
+                                    <span id="quickShortTime">5</span>
+                                    <button class="adj-btn" data-target="short" data-delta="1">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Theme Selector -->
+                    <div class="panel-section">
+                        <h3 class="panel-title">🎨 <span data-i18n="theme">Tema</span></h3>
+                        <div id="themeGrid" class="theme-grid">
+                            <!-- Themes injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Motivation Quote -->
+                    <div class="panel-section motivation-section">
+                        <p class="quote-text" id="quoteText">"Başlamanın sırrı, konuşmayı bırakıp yapmaya başlamaktır."
+                        </p>
+                        <span class="quote-author" id="quoteAuthor">- Mark Twain</span>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Keyboard Shortcuts Hint -->
+        <div class="shortcuts-hint" id="shortcutsHint">
+            <span data-i18n="shortcuts">Kısayollar:</span>
+            <kbd>Space</kbd> <span data-i18n="startPause">Başlat/Duraklat</span>
+            <kbd>R</kbd> <span data-i18n="resetKey">Sıfırla</span>
+            <kbd>1-3</kbd> <span data-i18n="modeSwitch">Mod Değiştir</span>
+            <kbd>F</kbd> <span data-i18n="fullscreenKey">Tam Ekran</span>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-i18n="settings">Ayarlar</h2>
+                <button class="modal-close" id="closeSettings">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Timer Settings -->
+                <div class="settings-group">
+                    <h3 data-i18n="timerSettings">Zamanlayıcı Ayarları</h3>
+                    <div class="setting-item">
+                        <label data-i18n="focusDuration">Odaklanma Süresi (dakika)</label>
+                        <input type="number" id="focusDuration" min="1" max="120" value="25">
+                    </div>
+                    <div class="setting-item">
+                        <label data-i18n="shortBreakDuration">Kısa Mola (dakika)</label>
+                        <input type="number" id="shortBreakDuration" min="1" max="30" value="5">
+                    </div>
+                    <div class="setting-item">
+                        <label data-i18n="longBreakDuration">Uzun Mola (dakika)</label>
+                        <input type="number" id="longBreakDuration" min="1" max="60" value="15">
+                    </div>
+                    <div class="setting-item">
+                        <label data-i18n="longBreakInterval">Uzun Mola Sonrası (oturum)</label>
+                        <input type="number" id="longBreakInterval" min="1" max="10" value="4">
+                    </div>
+                </div>
+
+                <!-- Automation -->
+                <div class="settings-group">
+                    <h3 data-i18n="automation">Otomasyon</h3>
+                    <div class="setting-item">
+                        <label data-i18n="autoStartBreaks">Molaları Otomatik Başlat</label>
+                        <input type="checkbox" id="autoStartBreaks">
+                    </div>
+                    <div class="setting-item">
+                        <label data-i18n="autoStartPomodoros">Pomodoroları Otomatik Başlat</label>
+                        <input type="checkbox" id="autoStartPomodoros">
+                    </div>
+                </div>
+
+                <!-- Sound Settings -->
+                <div class="settings-group">
+                    <h3 data-i18n="soundSettings">Ses Ayarları</h3>
+                    <div class="setting-item">
+                        <label data-i18n="alarmSound">Alarm Sesi</label>
+                        <select id="alarmSound">
+                            <option value="bell" data-i18n="bell">Zil</option>
+                            <option value="digital" data-i18n="digital">Dijital</option>
+                            <option value="gentle" data-i18n="gentle">Yumuşak</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label data-i18n="alarmVolume">Alarm Ses Seviyesi</label>
+                        <input type="range" id="alarmVolume" min="0" max="100" value="80">
+                    </div>
+                </div>
+
+                <!-- Goal Settings -->
+                <div class="settings-group">
+                    <h3 data-i18n="goalSettings">Hedef Ayarları</h3>
+                    <div class="setting-item">
+                        <label data-i18n="dailyGoalNumber">Günlük Hedef (pomodoro)</label>
+                        <input type="number" id="dailyGoalCount" min="1" max="20" value="8">
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="settings-group">
+                    <h3 data-i18n="notificationSettings">Bildirimler</h3>
+                    <div class="setting-item">
+                        <label data-i18n="browserNotifications">Tarayıcı Bildirimleri</label>
+                        <input type="checkbox" id="browserNotifications">
+                    </div>
+                    <div class="setting-item">
+                        <button class="btn-secondary" id="requestNotificationPermission"
+                            data-i18n="enableNotifications">Bildirimleri Etkinleştir</button>
+                    </div>
+                </div>
+
+                <!-- Data -->
+                <div class="settings-group">
+                    <h3 data-i18n="data">Veri</h3>
+                    <div class="data-buttons">
+                        <button class="btn-secondary danger" id="clearData" data-i18n="clearData">Verileri Sil</button>
+                    </div>
+                    <p class="auto-save-hint" data-i18n="autoSaveHint">✓ Değişiklikler otomatik kaydedilir</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Modal -->
+    <div class="modal" id="statsModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 data-i18n="statistics">İstatistikler</h2>
+                <button class="modal-close" id="closeStats">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="stats-overview">
+                    <div class="stat-card">
+                        <span class="stat-icon">🍅</span>
+                        <span class="stat-value" id="totalPomodoros">0</span>
+                        <span class="stat-label" data-i18n="totalPomodoros">Toplam Pomodoro</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">⏱️</span>
+                        <span class="stat-value" id="totalTime">0h</span>
+                        <span class="stat-label" data-i18n="totalTime">Toplam Süre</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">📅</span>
+                        <span class="stat-value" id="currentStreak">0</span>
+                        <span class="stat-label" data-i18n="currentStreak">Güncel Seri</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">🔥</span>
+                        <span class="stat-value" id="bestStreak">0</span>
+                        <span class="stat-label" data-i18n="bestStreak">En İyi Seri</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Mode -->
+    <div class="fullscreen-mode" id="fullscreenMode">
+        <div class="fs-timer">
+            <svg class="timer-svg fs-svg" viewBox="0 0 200 200" style="overflow: visible;">
+                <circle class="timer-bg" cx="100" cy="100" r="90" />
+                <circle class="timer-progress fs-progress" cx="100" cy="100" r="90" />
+            </svg>
+            <div class="fs-display">
+                <span class="fs-time" id="fsTimerDisplay">25:00</span>
+                <span class="fs-label" id="fsTimerLabel">ODAKLANMA ZAMANI</span>
+            </div>
+        </div>
+        <div class="fs-controls-bottom">
+            <button class="fs-control-btn" id="fsControlBtn">
+                <span class="fs-btn-icon">▶</span>
+            </button>
+        </div>
+
+        <div class="fs-top-controls">
+            <button class="fs-exit-btn" id="fsExitBtn" title="Çıkış">✕</button>
+        </div>
+
+        <div class="fs-ambient-bar">
+            <div class="fs-sound-grid" id="fsSoundGrid"></div>
+            <div class="fs-volume-control">
+                <span>🔊</span>
+                <input type="range" class="fs-volume-slider" min="0" max="1" step="0.1">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/stats.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- V2 Modules -->
+    <script src="js/achievements.js"></script>
+    <script src="js/tags.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/themes.js"></script>
+    <script src="js/avatars.js"></script>
+    <script src="js/clockStyles.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/wellness.js"></script>
+    <script src="js/sounds.js"></script>
+
+</body>
+
+</html>

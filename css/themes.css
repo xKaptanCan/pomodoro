@@ -1,0 +1,287 @@
+/* ===== CSS VARIABLES ROOT ===== */
+:root {
+    /* Font */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 3rem;
+
+    /* Colors */
+    --accent-primary: #667eea;
+    --accent-secondary: #764ba2;
+    --success: #4ECDC4;
+    --warning: #FFE66D;
+    --danger: #FF6B6B;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 400ms ease;
+
+    /* Timer */
+    --timer-size: 320px;
+    --timer-stroke-width: 8px;
+
+    /* Default Mode Colors (Focus) */
+    --mode-primary: #FF6B6B;
+    --mode-secondary: #FF8E53;
+    --mode-gradient: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    --mode-glow: rgba(255, 107, 107, 0.4);
+
+    /* Default Theme (Dark/Midnight) */
+    --bg-primary: #0D0D14;
+    --bg-secondary: #151520;
+    --bg-tertiary: #1E1E2E;
+    --bg-card: #252535;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A0B0;
+    --text-muted: #6B6B7B;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(30, 30, 46, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --modal-bg: #1E1E2E;
+    --modal-overlay: rgba(0, 0, 0, 0.8);
+}
+
+/* ===== MODE COLORS - Using body attribute ===== */
+/* Focus Mode - Warm Red/Orange (Default) */
+body[data-mode="focus"] {
+    --mode-primary: #FF6B6B;
+    --mode-secondary: #FF8E53;
+    --mode-gradient: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    --mode-glow: rgba(255, 107, 107, 0.4);
+}
+
+/* Short Break Mode - Teal/Cyan */
+body[data-mode="shortBreak"] {
+    --mode-primary: #4ECDC4;
+    --mode-secondary: #44A08D;
+    --mode-gradient: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+    --mode-glow: rgba(78, 205, 196, 0.4);
+}
+
+/* Long Break Mode - Purple */
+body[data-mode="longBreak"] {
+    --mode-primary: #667eea;
+    --mode-secondary: #764ba2;
+    --mode-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --mode-glow: rgba(102, 126, 234, 0.4);
+}
+
+/* ===== THEME: MIDNIGHT (Default Dark) ===== */
+body[data-theme="dark"],
+body[data-theme="midnight"] {
+    --bg-primary: #0D0D14;
+    --bg-secondary: #151520;
+    --bg-tertiary: #1E1E2E;
+    --bg-card: #252535;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A0B0;
+    --text-muted: #6B6B7B;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(30, 30, 46, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --modal-bg: #1E1E2E;
+    --modal-overlay: rgba(0, 0, 0, 0.8);
+}
+
+/* ===== THEME: AURORA ===== */
+body[data-theme="aurora"] {
+    --bg-primary: #0a192f;
+    --bg-secondary: #112240;
+    --bg-tertiary: #1d3557;
+    --bg-card: #233554;
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --text-muted: #495670;
+    --border-color: rgba(100, 255, 218, 0.1);
+    --glass-bg: rgba(17, 34, 64, 0.8);
+    --glass-border: rgba(100, 255, 218, 0.15);
+    --accent-primary: #64ffda;
+    --accent-secondary: #00bcd4;
+}
+
+/* ===== THEME: SUNSET ===== */
+body[data-theme="sunset"] {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-tertiary: #0f3460;
+    --bg-card: #1f4068;
+    --text-primary: #eee2dc;
+    --text-secondary: #bab2b5;
+    --text-muted: #7d7a7a;
+    --border-color: rgba(255, 107, 107, 0.15);
+    --glass-bg: rgba(22, 33, 62, 0.75);
+    --glass-border: rgba(255, 180, 162, 0.2);
+    --accent-primary: #e94560;
+    --accent-secondary: #ff6b6b;
+}
+
+/* ===== THEME: FOREST ===== */
+body[data-theme="forest"] {
+    --bg-primary: #0d1b0d;
+    --bg-secondary: #1a2f1a;
+    --bg-tertiary: #2d4a2d;
+    --bg-card: #3d5a3d;
+    --text-primary: #e8f5e9;
+    --text-secondary: #a5d6a7;
+    --text-muted: #66bb6a;
+    --border-color: rgba(129, 199, 132, 0.15);
+    --glass-bg: rgba(45, 74, 45, 0.7);
+    --glass-border: rgba(129, 199, 132, 0.2);
+    --accent-primary: #81c784;
+    --accent-secondary: #4caf50;
+}
+
+/* ===== THEME: OCEAN ===== */
+body[data-theme="ocean"] {
+    --bg-primary: #0a1929;
+    --bg-secondary: #0d2137;
+    --bg-tertiary: #132f4c;
+    --bg-card: #173a5e;
+    --text-primary: #e3f2fd;
+    --text-secondary: #90caf9;
+    --text-muted: #5c8fbd;
+    --border-color: rgba(33, 150, 243, 0.15);
+    --glass-bg: rgba(19, 47, 76, 0.75);
+    --glass-border: rgba(33, 150, 243, 0.2);
+    --accent-primary: #29b6f6;
+    --accent-secondary: #0288d1;
+}
+
+/* ===== THEME: LAVENDER ===== */
+body[data-theme="lavender"] {
+    --bg-primary: #1a1625;
+    --bg-secondary: #251d33;
+    --bg-tertiary: #352a47;
+    --bg-card: #453859;
+    --text-primary: #f3e5f5;
+    --text-secondary: #ce93d8;
+    --text-muted: #9575cd;
+    --border-color: rgba(186, 104, 200, 0.15);
+    --glass-bg: rgba(53, 42, 71, 0.75);
+    --glass-border: rgba(186, 104, 200, 0.2);
+    --accent-primary: #ba68c8;
+    --accent-secondary: #9c27b0;
+}
+
+/* ===== THEME: ROSE ===== */
+body[data-theme="rose"] {
+    --bg-primary: #1f1318;
+    --bg-secondary: #2d1b23;
+    --bg-tertiary: #3d2833;
+    --bg-card: #4d3544;
+    --text-primary: #fce4ec;
+    --text-secondary: #f48fb1;
+    --text-muted: #c2185b;
+    --border-color: rgba(233, 30, 99, 0.15);
+    --glass-bg: rgba(61, 40, 51, 0.75);
+    --glass-border: rgba(233, 30, 99, 0.2);
+    --accent-primary: #ec407a;
+    --accent-secondary: #e91e63;
+}
+
+/* ===== THEME: COFFEE ===== */
+body[data-theme="coffee"] {
+    --bg-primary: #1a140f;
+    --bg-secondary: #2d2318;
+    --bg-tertiary: #3e3127;
+    --bg-card: #4f3f34;
+    --text-primary: #efebe9;
+    --text-secondary: #bcaaa4;
+    --text-muted: #8d6e63;
+    --border-color: rgba(161, 136, 127, 0.15);
+    --glass-bg: rgba(62, 49, 39, 0.75);
+    --glass-border: rgba(161, 136, 127, 0.2);
+    --accent-primary: #a1887f;
+    --accent-secondary: #795548;
+}
+
+/* ===== THEME: NORD ===== */
+body[data-theme="nord"] {
+    --bg-primary: #2e3440;
+    --bg-secondary: #3b4252;
+    --bg-tertiary: #434c5e;
+    --bg-card: #4c566a;
+    --text-primary: #eceff4;
+    --text-secondary: #d8dee9;
+    --text-muted: #81a1c1;
+    --border-color: rgba(136, 192, 208, 0.15);
+    --glass-bg: rgba(67, 76, 94, 0.75);
+    --glass-border: rgba(136, 192, 208, 0.2);
+    --accent-primary: #88c0d0;
+    --accent-secondary: #5e81ac;
+}
+
+/* ===== THEME: DRACULA ===== */
+body[data-theme="dracula"] {
+    --bg-primary: #282a36;
+    --bg-secondary: #1e1f29;
+    --bg-tertiary: #343746;
+    --bg-card: #44475a;
+    --text-primary: #f8f8f2;
+    --text-secondary: #bd93f9;
+    --text-muted: #6272a4;
+    --border-color: rgba(189, 147, 249, 0.15);
+    --glass-bg: rgba(52, 55, 70, 0.75);
+    --glass-border: rgba(189, 147, 249, 0.2);
+    --accent-primary: #ff79c6;
+    --accent-secondary: #bd93f9;
+}
+
+/* ===== LIGHT THEMES ===== */
+body[data-theme="light"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e8e8e8;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #7a7a7a;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --modal-bg: #ffffff;
+    --modal-overlay: rgba(0, 0, 0, 0.5);
+}
+
+body[data-theme="cream"] {
+    --bg-primary: #faf8f5;
+    --bg-secondary: #fff9f0;
+    --bg-tertiary: #f0ebe3;
+    --bg-card: #ffffff;
+    --text-primary: #2c2c2c;
+    --text-secondary: #5c5c5c;
+    --text-muted: #8c8c8c;
+    --border-color: rgba(139, 90, 43, 0.1);
+    --glass-bg: rgba(255, 249, 240, 0.9);
+    --glass-border: rgba(139, 90, 43, 0.15);
+    --accent-primary: #d4a574;
+    --accent-secondary: #8b5a2b;
+}

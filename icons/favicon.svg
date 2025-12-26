@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="tomatoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B"/>
+      <stop offset="100%" style="stop-color:#FF8E53"/>
+    </linearGradient>
+  </defs>
+  <!-- Tomato body -->
+  <ellipse cx="50" cy="55" rx="40" ry="35" fill="url(#tomatoGrad)"/>
+  <!-- Highlight -->
+  <ellipse cx="35" cy="45" rx="10" ry="8" fill="rgba(255,255,255,0.3)"/>
+  <!-- Stem -->
+  <path d="M50 25 Q50 15, 55 10 Q60 15, 55 22 Q52 20, 50 25" fill="#4CAF50"/>
+  <!-- Leaf -->
+  <path d="M55 18 Q65 12, 70 18 Q65 20, 55 20 Z" fill="#66BB6A"/>
+  <path d="M48 18 Q38 12, 33 18 Q38 20, 48 20 Z" fill="#66BB6A"/>
+</svg>
