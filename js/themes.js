@@ -10,9 +10,10 @@ const Themes = {
         { id: 'lavender', nameKey: 'theme_lavender', color: '#1a1625', icon: '💜' },
         { id: 'rose', nameKey: 'theme_rose', color: '#1f1318', icon: '🌹' },
         { id: 'coffee', nameKey: 'theme_coffee', color: '#1a140f', icon: '☕' },
-        { id: 'nord', nameKey: 'theme_nord', color: '#2e3440', icon: '❄️' },
+        { id: 'nord', nameKey: 'theme_nord', color: '#2e3440', icon: '🧊' },
         { id: 'dracula', nameKey: 'theme_dracula', color: '#282a36', icon: '🧛' },
-        { id: 'cream', nameKey: 'theme_cream', color: '#faf8f5', icon: '🍦' }
+        { id: 'cream', nameKey: 'theme_cream', color: '#faf8f5', icon: '🍦' },
+        { id: 'snow', nameKey: 'theme_snow', color: '#0D0D14', icon: '❄️' }
     ],
 
     init() {
