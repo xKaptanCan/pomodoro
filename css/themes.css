@@ -223,22 +223,6 @@ body[data-theme="coffee"] {
     --accent-secondary: #795548;
 }
 
-/* ===== THEME: NORD ===== */
-body[data-theme="nord"] {
-    --bg-primary: #2e3440;
-    --bg-secondary: #3b4252;
-    --bg-tertiary: #434c5e;
-    --bg-card: #4c566a;
-    --text-primary: #eceff4;
-    --text-secondary: #d8dee9;
-    --text-muted: #81a1c1;
-    --border-color: rgba(136, 192, 208, 0.15);
-    --glass-bg: rgba(67, 76, 94, 0.75);
-    --glass-border: rgba(136, 192, 208, 0.2);
-    --accent-primary: #88c0d0;
-    --accent-secondary: #5e81ac;
-}
-
 /* ===== THEME: DRACULA ===== */
 body[data-theme="dracula"] {
     --bg-primary: #282a36;
