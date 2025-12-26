@@ -34,7 +34,6 @@ const App = {
         Themes.init();
         Avatars.init();
         ClockStyles.init();
-        Radio.init();
 
         // Initialize timer
         const settings = Storage.getSettings();
@@ -536,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => App.init());
 // Register Service Worker for Offline Support
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('./sw.js')
             .then((reg) => console.log('Service Worker registered:', reg.scope))
             .catch((err) => console.error('SW registration failed:', err));
     });

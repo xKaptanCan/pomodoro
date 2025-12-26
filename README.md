@@ -14,6 +14,15 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License">
 </p>
 
+<p align="center">
+  <a href="https://xkaptancan.github.io/pomodoro/" target="_blank">
+    <img src="https://img.shields.io/badge/🚀_Live_Demo-Click_Here-FF6B6B?style=for-the-badge" alt="Live Demo">
+  </a>
+  <a href="https://github.com/xKaptanCan/pomodoro" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub">
+  </a>
+</p>
+
 ---
 
 ## 📸 Screenshots
@@ -101,10 +110,10 @@ Simply visit the hosted version and start using immediately!
 ### Option 2: Run Locally
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/pomodoroo.git
+git clone https://github.com/xKaptanCan/pomodoro.git
 
 # Navigate to the directory
-cd pomodoroo
+cd pomodoro
 
 # Start a local server (any of these work)
 npx http-server -p 3000
