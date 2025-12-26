@@ -83,8 +83,7 @@ const App = {
         // Theme toggle
         document.getElementById('themeToggle').addEventListener('click', () => this.toggleTheme());
 
-        // Language toggle
-        document.getElementById('langToggle').addEventListener('click', () => I18n.toggleLanguage());
+        // Language dropdown is handled by I18n.bindDropdown()
 
         // Settings button
         document.getElementById('settingsBtn').addEventListener('click', () => Settings.open());

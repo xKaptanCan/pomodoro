@@ -1,40 +1,44 @@
-// Internationalization Module
+// Internationalization Module - 10 Languages Support
 const I18n = {
     currentLang: 'en',
+
+    // Language metadata for dropdown
+    languages: {
+        en: { name: 'English', flag: '🇬🇧' },
+        tr: { name: 'Türkçe', flag: '🇹🇷' },
+        es: { name: 'Español', flag: '🇪🇸' },
+        fr: { name: 'Français', flag: '🇫🇷' },
+        de: { name: 'Deutsch', flag: '🇩🇪' },
+        pt: { name: 'Português', flag: '🇧🇷' },
+        ru: { name: 'Русский', flag: '🇷🇺' },
+        zh: { name: '中文', flag: '🇨🇳' },
+        ja: { name: '日本語', flag: '🇯🇵' },
+        ar: { name: 'العربية', flag: '🇸🇦' }
+    },
+
     translations: {
+        // ========== ENGLISH ==========
         en: {
             appTitle: 'Pomodoro Timer',
             focus: 'Focus',
             shortBreak: 'Short Break',
             longBreak: 'Long Break',
-            focusTime: 'Focus Time',
-            breakTime: 'Break Time',
+            focusTime: 'FOCUS TIME',
+            breakTime: 'BREAK TIME',
             start: 'START',
             pause: 'PAUSE',
             reset: 'RESET',
             fullscreen: 'FULLSCREEN',
-
-            // Share
-            shareStats: 'Share Stats',
-            shareHint: 'Preparing image...',
-            readyToShare: 'Ready to share!',
-            download: 'Download',
-            shareTwitter: 'Share on Twitter',
-            generating: 'Generating...',
-            dailyGoal: 'Daily Goal:',
-            pomodoros: 'pomodoros',
-            ambientSounds: 'Ambient Sounds',
-            spotifyPlaylist: 'Spotify Playlist',
-            optional: '(optional)',
-            spotifyPlaceholder: 'Paste Spotify playlist URL...',
-            load: 'Load',
-            sessionNotes: 'Session Notes',
-            notesPlaceholder: 'What are you working on?',
-            shortcuts: 'Shortcuts:',
-            startPause: 'Start/Pause',
-            resetKey: 'Reset',
-            modeSwitch: 'Switch Mode',
-            fullscreenKey: 'Fullscreen',
+            todayStats: 'Today\'s Stats',
+            dailyGoal: 'Daily Goal',
+            achievements: 'Achievements',
+            thisWeek: 'This Week',
+            tasks: 'Tasks',
+            addTaskPlaceholder: 'Add a new task...',
+            noTasks: 'What is your plan for today? Add a task! 🚀',
+            ambientSounds: 'Ambient',
+            quickSettings: 'Quick Settings',
+            theme: 'Theme',
             settings: 'Settings',
             timerSettings: 'Timer Settings',
             focusDuration: 'Focus Duration (minutes)',
@@ -51,48 +55,31 @@ const I18n = {
             gentle: 'Gentle',
             alarmVolume: 'Alarm Volume',
             goalSettings: 'Goal Settings',
-            dailyGoalCount: 'Daily Goal (pomodoros)',
+            dailyGoalNumber: 'Daily Goal (pomodoros)',
             notificationSettings: 'Notifications',
             browserNotifications: 'Browser Notifications',
             enableNotifications: 'Enable Notifications',
-            dataManagement: 'Data Management',
-            exportData: 'Export Data',
-            importData: 'Import Data',
-            saveSettings: 'Save Settings',
+            data: 'Data',
+            clearData: 'Clear Data',
+            autoSaveHint: '✓ Changes are saved automatically',
             statistics: 'Statistics',
-            todayPomodoros: "Today's Pomodoros",
-            todayMinutes: 'Minutes Today',
-            dayStreak: 'Day Streak',
             totalPomodoros: 'Total Pomodoros',
-            weeklyOverview: 'Weekly Overview',
-            monthlyTrend: 'Monthly Trend',
-            recentSessions: 'Recent Sessions',
-            pressEscToExit: 'Press ESC or F to exit fullscreen',
+            totalTime: 'Total Time',
+            currentStreak: 'Current Streak',
+            bestStreak: 'Best Streak',
             pomodoroComplete: 'Pomodoro Complete!',
             breakComplete: 'Break Complete!',
             timeForBreak: 'Time for a break!',
             timeToFocus: 'Time to focus!',
-            timeToFocus: 'Time to focus!',
             goalReached: 'Daily goal reached! 🎉',
             stopTimerFirst: 'Timer is running. Stop and switch mode?',
-
-            // Tasks
-            tasks: 'Tasks',
-            addTaskPlaceholder: 'Add a new task...',
-            noTasks: 'What is your plan for today? Add a task! 🚀',
-
-            // Wellness
+            shortcuts: 'Shortcuts:',
+            startPause: 'Start/Pause',
+            resetKey: 'Reset',
+            modeSwitch: 'Switch Mode',
+            fullscreenKey: 'Fullscreen',
             wellnessTitle: 'Wellness Break',
             ok: 'OK',
-            wellness_neck: 'Gently stretch your neck to the right, left, and forward.',
-            wellness_shoulder: 'Lift your shoulders and roll them back a few times.',
-            wellness_stand: 'Stand up and take a short walk or stretch.',
-            wellness_eyes_20: 'Look away from the screen for 20 seconds.',
-            wellness_eyes_blink: 'Blink your eyes rapidly 10 times.',
-            wellness_water: 'Refresh your body with a glass of water.',
-
-            // Ambient Sounds
-            ambientSounds: 'Ambient',
             sound_rain: 'Rain',
             sound_forest: 'Forest',
             sound_cafe: 'Cafe',
@@ -100,175 +87,72 @@ const I18n = {
             sound_waves: 'Waves',
             sound_thunder: 'Thunder',
             sound_wind: 'Wind',
-            sound_crickets: 'Crickets',
-
-            monday: 'Mon',
-            tuesday: 'Tue',
-            wednesday: 'Wed',
-            thursday: 'Thu',
-            friday: 'Fri',
-            saturday: 'Sat',
-            sunday: 'Sun',
-            theme: 'Theme',
-            theme_midnight: 'Midnight',
-            theme_light: 'Light',
-            theme_aurora: 'Aurora',
-            theme_sunset: 'Sunset',
-            theme_forest: 'Forest',
-            theme_ocean: 'Ocean',
-            theme_lavender: 'Lavender',
-            theme_rose: 'Rose',
-            theme_coffee: 'Coffee',
-            theme_nord: 'Nord',
-            theme_dracula: 'Dracula',
-            theme_cream: 'Cream',
+            sound_crickets: 'Crickets'
         },
-        tr: {
-            // App
-            appTitle: 'Pomodoro Zamanlayıcı',
 
-            // Modes
+        // ========== TURKISH ==========
+        tr: {
+            appTitle: 'Pomodoro Zamanlayıcı',
             focus: 'Odaklan',
             shortBreak: 'Kısa Mola',
             longBreak: 'Uzun Mola',
             focusTime: 'ODAKLANMA ZAMANI',
             breakTime: 'MOLA ZAMANI',
-
-            // Controls
             start: 'BAŞLAT',
             pause: 'DURAKLAT',
             reset: 'SIFIRLA',
-
-            // Left Panel
+            fullscreen: 'TAM EKRAN',
             todayStats: 'Bugünkü İstatistik',
             dailyGoal: 'Günlük Hedef',
             achievements: 'Başarılar',
             thisWeek: 'Bu Hafta',
-
-            // Right Panel
-            sessionNotes: 'Oturum Notları',
+            tasks: 'Görevler',
+            addTaskPlaceholder: 'Yeni görev ekle...',
+            noTasks: 'Bugün için planın ne? Hadi bir görev ekle! 🚀',
+            ambientSounds: 'Atmosfer',
             quickSettings: 'Hızlı Ayarlar',
             theme: 'Tema',
-            theme_midnight: 'Gece Yarısı',
-            theme_light: 'Aydınlık',
-            theme_aurora: 'Aurora',
-            theme_sunset: 'Gün Batımı',
-            theme_forest: 'Orman',
-            theme_ocean: 'Okyanus',
-            theme_lavender: 'Lavanta',
-            theme_rose: 'Gül',
-            theme_coffee: 'Kahve',
-            theme_nord: 'Kuzey',
-            theme_dracula: 'Drakula',
-            theme_cream: 'Krema',
-
-            reset: 'SIFIRLA',
-            fullscreen: 'TAM EKRAN',
-
-            // Share
-            shareStats: 'İstatistikleri Paylaş',
-            shareHint: 'Görsel hazırlanıyor...',
-            readyToShare: 'Paylaşmaya hazır!',
-            download: 'İndir',
-            shareTwitter: 'Twitter\'da Paylaş',
-            generating: 'Oluşturuluyor...',
-
-            // Stats
-            pomodoros: 'pomodoro',
-            todayPomodoros: 'Bugünkü Pomodorolar',
-            todayMinutes: 'Bugünkü Dakikalar',
-            totalPomodoros: 'Toplam Pomodoro',
-            totalTime: 'Toplam Süre',
-            currentStreak: 'Güncel Seri',
-            bestStreak: 'En İyi Seri',
-            dayStreak: 'Gün Serisi',
-            weeklyOverview: 'Haftalık Özet',
-            monthlyTrend: 'Aylık Trend',
-            recentSessions: 'Son Oturumlar',
-
-            // Days
-            monday: 'Pzt',
-            tuesday: 'Sal',
-            wednesday: 'Çar',
-            thursday: 'Per',
-            friday: 'Cum',
-            saturday: 'Cmt',
-            sunday: 'Paz',
-
-            // Settings
             settings: 'Ayarlar',
             timerSettings: 'Zamanlayıcı Ayarları',
             focusDuration: 'Odaklanma Süresi (dakika)',
             shortBreakDuration: 'Kısa Mola (dakika)',
             longBreakDuration: 'Uzun Mola (dakika)',
             longBreakInterval: 'Uzun Mola Sonrası (oturum)',
-            dailyGoalNumber: 'Günlük Hedef (pomodoro)',
-
-            // Automation
             automation: 'Otomasyon',
             autoStartBreaks: 'Molaları Otomatik Başlat',
             autoStartPomodoros: 'Pomodoroları Otomatik Başlat',
-
-            // Sound
             soundSettings: 'Ses Ayarları',
             alarmSound: 'Alarm Sesi',
             bell: 'Zil',
             digital: 'Dijital',
             gentle: 'Yumuşak',
             alarmVolume: 'Alarm Ses Seviyesi',
-
-            // Goals
             goalSettings: 'Hedef Ayarları',
-            dailyGoalCount: 'Günlük Hedef (pomodoro)',
-
-            // Data
-            data: 'Veri',
-            exportData: 'Dışa Aktar',
-            importData: 'İçe Aktar',
-            clearData: 'Verileri Sil',
-            dataManagement: 'Veri Yönetimi',
-
-            // Notifications
+            dailyGoalNumber: 'Günlük Hedef (pomodoro)',
             notificationSettings: 'Bildirimler',
             browserNotifications: 'Tarayıcı Bildirimleri',
             enableNotifications: 'Bildirimleri Etkinleştir',
-
-            // Messages
+            data: 'Veri',
+            clearData: 'Verileri Sil',
+            autoSaveHint: '✓ Değişiklikler otomatik kaydedilir',
+            statistics: 'İstatistikler',
+            totalPomodoros: 'Toplam Pomodoro',
+            totalTime: 'Toplam Süre',
+            currentStreak: 'Güncel Seri',
+            bestStreak: 'En İyi Seri',
             pomodoroComplete: 'Pomodoro Tamamlandı!',
             breakComplete: 'Mola Bitti!',
             timeForBreak: 'Mola zamanı!',
             timeToFocus: 'Odaklanma zamanı!',
             goalReached: 'Günlük hedef tamamlandı! 🎉',
             stopTimerFirst: 'Zamanlayıcı çalışıyor. Durdurup mod değiştirilsin mi?',
-
-            // Shortcuts
             shortcuts: 'Kısayollar:',
             startPause: 'Başlat/Duraklat',
             resetKey: 'Sıfırla',
             modeSwitch: 'Mod Değiştir',
             fullscreenKey: 'Tam Ekran',
-            resetKey: 'Sıfırla',
-            modeSwitch: 'Mod Değiştir',
-            fullscreenKey: 'Tam Ekran',
-            pressEscToExit: 'Tam ekrandan çıkmak için ESC veya F',
-
-            // Tasks
-            tasks: 'Görevler',
-            addTaskPlaceholder: 'Yeni görev ekle...',
-            noTasks: 'Bugün için planın ne? Hadi bir görev ekle! 🚀',
-
-            // Wellness
             wellnessTitle: 'Sağlık Molası',
             ok: 'Tamam',
-            wellness_neck: 'Boynunu yavaşça sağa, sola ve öne doğru esnet.',
-            wellness_shoulder: 'Omuzlarını yukarı kaldır ve geriye doğru birkaç kez çevir.',
-            wellness_stand: 'Ayağa kalk ve kısa bir yürüyüş yap veya gerin.',
-            wellness_eyes_20: 'Gözlerini ekrandan ayır ve 20 saniye uzağa bak.',
-            wellness_eyes_blink: 'Gözlerini 10 kez hızlıca kırpıştır.',
-            wellness_water: 'Bir bardak su içerek vücudunu yenile.',
-
-            // Ambient Sounds
-            ambientSounds: 'Atmosfer',
             sound_rain: 'Yağmur',
             sound_forest: 'Orman',
             sound_cafe: 'Kafe',
@@ -276,56 +160,639 @@ const I18n = {
             sound_waves: 'Dalga',
             sound_thunder: 'Gök Gürültüsü',
             sound_wind: 'Rüzgar',
-            sound_crickets: 'Cırcır Böceği',
+            sound_crickets: 'Cırcır Böceği'
+        },
 
-            // Statistics Modal
-            statistics: 'İstatistikler',
+        // ========== SPANISH ==========
+        es: {
+            appTitle: 'Temporizador Pomodoro',
+            focus: 'Enfoque',
+            shortBreak: 'Descanso Corto',
+            longBreak: 'Descanso Largo',
+            focusTime: 'TIEMPO DE ENFOQUE',
+            breakTime: 'TIEMPO DE DESCANSO',
+            start: 'INICIAR',
+            pause: 'PAUSAR',
+            reset: 'REINICIAR',
+            fullscreen: 'PANTALLA COMPLETA',
+            todayStats: 'Estadísticas de Hoy',
+            dailyGoal: 'Meta Diaria',
+            achievements: 'Logros',
+            thisWeek: 'Esta Semana',
+            tasks: 'Tareas',
+            addTaskPlaceholder: 'Añadir una tarea...',
+            noTasks: '¿Cuál es tu plan para hoy? ¡Añade una tarea! 🚀',
+            ambientSounds: 'Ambiente',
+            quickSettings: 'Ajustes Rápidos',
+            theme: 'Tema',
+            settings: 'Configuración',
+            timerSettings: 'Ajustes del Temporizador',
+            focusDuration: 'Duración del Enfoque (minutos)',
+            shortBreakDuration: 'Descanso Corto (minutos)',
+            longBreakDuration: 'Descanso Largo (minutos)',
+            longBreakInterval: 'Descanso Largo Después (sesiones)',
+            automation: 'Automatización',
+            autoStartBreaks: 'Iniciar Descansos Automáticamente',
+            autoStartPomodoros: 'Iniciar Pomodoros Automáticamente',
+            soundSettings: 'Ajustes de Sonido',
+            alarmSound: 'Sonido de Alarma',
+            bell: 'Campana',
+            digital: 'Digital',
+            gentle: 'Suave',
+            alarmVolume: 'Volumen de Alarma',
+            goalSettings: 'Ajustes de Meta',
+            dailyGoalNumber: 'Meta Diaria (pomodoros)',
+            notificationSettings: 'Notificaciones',
+            browserNotifications: 'Notificaciones del Navegador',
+            enableNotifications: 'Habilitar Notificaciones',
+            data: 'Datos',
+            clearData: 'Borrar Datos',
+            autoSaveHint: '✓ Los cambios se guardan automáticamente',
+            statistics: 'Estadísticas',
+            totalPomodoros: 'Pomodoros Totales',
+            totalTime: 'Tiempo Total',
+            currentStreak: 'Racha Actual',
+            bestStreak: 'Mejor Racha',
+            pomodoroComplete: '¡Pomodoro Completado!',
+            breakComplete: '¡Descanso Completado!',
+            timeForBreak: '¡Hora de descansar!',
+            timeToFocus: '¡Hora de enfocarse!',
+            goalReached: '¡Meta diaria alcanzada! 🎉',
+            stopTimerFirst: 'El temporizador está activo. ¿Detener y cambiar modo?',
+            shortcuts: 'Atajos:',
+            startPause: 'Iniciar/Pausar',
+            resetKey: 'Reiniciar',
+            modeSwitch: 'Cambiar Modo',
+            fullscreenKey: 'Pantalla Completa',
+            wellnessTitle: 'Pausa de Bienestar',
+            ok: 'OK',
+            sound_rain: 'Lluvia',
+            sound_forest: 'Bosque',
+            sound_cafe: 'Cafetería',
+            sound_fire: 'Chimenea',
+            sound_waves: 'Olas',
+            sound_thunder: 'Trueno',
+            sound_wind: 'Viento',
+            sound_crickets: 'Grillos'
+        },
 
-            // Misc
-            notesPlaceholder: 'Ne üzerinde çalışıyorsun?',
-            ambientSounds: 'Ortam Sesleri',
-            spotifyPlaylist: 'Spotify Çalma Listesi',
-            optional: '(isteğe bağlı)',
-            spotifyPlaceholder: 'Spotify çalma listesi URL yapıştır...',
-            load: 'Yükle',
-            saveSettings: 'Ayarları Kaydet',
-            autoSaveHint: '✓ Değişiklikler otomatik kaydedilir',
+        // ========== FRENCH ==========
+        fr: {
+            appTitle: 'Minuteur Pomodoro',
+            focus: 'Concentration',
+            shortBreak: 'Pause Courte',
+            longBreak: 'Pause Longue',
+            focusTime: 'TEMPS DE CONCENTRATION',
+            breakTime: 'TEMPS DE PAUSE',
+            start: 'DÉMARRER',
+            pause: 'PAUSE',
+            reset: 'RÉINITIALISER',
+            fullscreen: 'PLEIN ÉCRAN',
+            todayStats: 'Stats du Jour',
+            dailyGoal: 'Objectif Quotidien',
+            achievements: 'Réalisations',
+            thisWeek: 'Cette Semaine',
+            tasks: 'Tâches',
+            addTaskPlaceholder: 'Ajouter une tâche...',
+            noTasks: 'Quel est votre plan pour aujourd\'hui? Ajoutez une tâche! 🚀',
+            ambientSounds: 'Ambiance',
+            quickSettings: 'Paramètres Rapides',
+            theme: 'Thème',
+            settings: 'Paramètres',
+            timerSettings: 'Paramètres du Minuteur',
+            focusDuration: 'Durée de Concentration (minutes)',
+            shortBreakDuration: 'Pause Courte (minutes)',
+            longBreakDuration: 'Pause Longue (minutes)',
+            longBreakInterval: 'Pause Longue Après (sessions)',
+            automation: 'Automatisation',
+            autoStartBreaks: 'Démarrer les Pauses Automatiquement',
+            autoStartPomodoros: 'Démarrer les Pomodoros Automatiquement',
+            soundSettings: 'Paramètres Audio',
+            alarmSound: 'Son d\'Alarme',
+            bell: 'Cloche',
+            digital: 'Numérique',
+            gentle: 'Doux',
+            alarmVolume: 'Volume d\'Alarme',
+            goalSettings: 'Paramètres d\'Objectif',
+            dailyGoalNumber: 'Objectif Quotidien (pomodoros)',
+            notificationSettings: 'Notifications',
+            browserNotifications: 'Notifications du Navigateur',
+            enableNotifications: 'Activer les Notifications',
+            data: 'Données',
+            clearData: 'Effacer les Données',
+            autoSaveHint: '✓ Les modifications sont enregistrées automatiquement',
+            statistics: 'Statistiques',
+            totalPomodoros: 'Total Pomodoros',
+            totalTime: 'Temps Total',
+            currentStreak: 'Série Actuelle',
+            bestStreak: 'Meilleure Série',
+            pomodoroComplete: 'Pomodoro Terminé!',
+            breakComplete: 'Pause Terminée!',
+            timeForBreak: 'C\'est l\'heure de la pause!',
+            timeToFocus: 'C\'est l\'heure de se concentrer!',
+            goalReached: 'Objectif quotidien atteint! 🎉',
+            stopTimerFirst: 'Le minuteur est actif. Arrêter et changer de mode?',
+            shortcuts: 'Raccourcis:',
+            startPause: 'Démarrer/Pause',
+            resetKey: 'Réinitialiser',
+            modeSwitch: 'Changer de Mode',
+            fullscreenKey: 'Plein Écran',
+            wellnessTitle: 'Pause Bien-être',
+            ok: 'OK',
+            sound_rain: 'Pluie',
+            sound_forest: 'Forêt',
+            sound_cafe: 'Café',
+            sound_fire: 'Cheminée',
+            sound_waves: 'Vagues',
+            sound_thunder: 'Tonnerre',
+            sound_wind: 'Vent',
+            sound_crickets: 'Grillons'
+        },
 
-            // Motivation Quotes
-            quotes: [
-                { text: 'Başlamanın sırrı, konuşmayı bırakıp yapmaya başlamaktır.', author: 'Walt Disney' },
-                { text: 'Bugün yapabileceğini yarına bırakma.', author: 'Benjamin Franklin' },
-                { text: 'Başarı, her gün tekrarlanan küçük çabaların toplamıdır.', author: 'Robert Collier' },
-                { text: 'Odaklan. Az ama iyi yap.', author: 'Steve Jobs' },
-                { text: 'Her uzun yolculuk tek bir adımla başlar.', author: 'Lao Tzu' },
-                { text: 'Disiplin, başarının köprüsüdür.', author: 'Jim Rohn' },
-                { text: 'Zamanını yönetemezsen, hiçbir şeyi yönetemezsin.', author: 'Peter Drucker' },
-                { text: 'Mükemmellik bir eylem değil, bir alışkanlıktır.', author: 'Aristoteles' }
-            ]
+        // ========== GERMAN ==========
+        de: {
+            appTitle: 'Pomodoro-Timer',
+            focus: 'Fokus',
+            shortBreak: 'Kurze Pause',
+            longBreak: 'Lange Pause',
+            focusTime: 'FOKUSZEIT',
+            breakTime: 'PAUSENZEIT',
+            start: 'STARTEN',
+            pause: 'PAUSE',
+            reset: 'ZURÜCKSETZEN',
+            fullscreen: 'VOLLBILD',
+            todayStats: 'Heutige Statistiken',
+            dailyGoal: 'Tagesziel',
+            achievements: 'Erfolge',
+            thisWeek: 'Diese Woche',
+            tasks: 'Aufgaben',
+            addTaskPlaceholder: 'Aufgabe hinzufügen...',
+            noTasks: 'Was ist dein Plan für heute? Füge eine Aufgabe hinzu! 🚀',
+            ambientSounds: 'Ambiente',
+            quickSettings: 'Schnelleinstellungen',
+            theme: 'Thema',
+            settings: 'Einstellungen',
+            timerSettings: 'Timer-Einstellungen',
+            focusDuration: 'Fokus-Dauer (Minuten)',
+            shortBreakDuration: 'Kurze Pause (Minuten)',
+            longBreakDuration: 'Lange Pause (Minuten)',
+            longBreakInterval: 'Lange Pause Nach (Sitzungen)',
+            automation: 'Automatisierung',
+            autoStartBreaks: 'Pausen automatisch starten',
+            autoStartPomodoros: 'Pomodoros automatisch starten',
+            soundSettings: 'Ton-Einstellungen',
+            alarmSound: 'Alarmton',
+            bell: 'Glocke',
+            digital: 'Digital',
+            gentle: 'Sanft',
+            alarmVolume: 'Alarmlautstärke',
+            goalSettings: 'Ziel-Einstellungen',
+            dailyGoalNumber: 'Tagesziel (Pomodoros)',
+            notificationSettings: 'Benachrichtigungen',
+            browserNotifications: 'Browser-Benachrichtigungen',
+            enableNotifications: 'Benachrichtigungen aktivieren',
+            data: 'Daten',
+            clearData: 'Daten löschen',
+            autoSaveHint: '✓ Änderungen werden automatisch gespeichert',
+            statistics: 'Statistiken',
+            totalPomodoros: 'Gesamte Pomodoros',
+            totalTime: 'Gesamtzeit',
+            currentStreak: 'Aktuelle Serie',
+            bestStreak: 'Beste Serie',
+            pomodoroComplete: 'Pomodoro abgeschlossen!',
+            breakComplete: 'Pause beendet!',
+            timeForBreak: 'Zeit für eine Pause!',
+            timeToFocus: 'Zeit sich zu konzentrieren!',
+            goalReached: 'Tagesziel erreicht! 🎉',
+            stopTimerFirst: 'Timer läuft. Stoppen und Modus wechseln?',
+            shortcuts: 'Tastenkürzel:',
+            startPause: 'Start/Pause',
+            resetKey: 'Zurücksetzen',
+            modeSwitch: 'Modus wechseln',
+            fullscreenKey: 'Vollbild',
+            wellnessTitle: 'Wellness-Pause',
+            ok: 'OK',
+            sound_rain: 'Regen',
+            sound_forest: 'Wald',
+            sound_cafe: 'Café',
+            sound_fire: 'Kamin',
+            sound_waves: 'Wellen',
+            sound_thunder: 'Donner',
+            sound_wind: 'Wind',
+            sound_crickets: 'Grillen'
+        },
+
+        // ========== PORTUGUESE ==========
+        pt: {
+            appTitle: 'Temporizador Pomodoro',
+            focus: 'Foco',
+            shortBreak: 'Pausa Curta',
+            longBreak: 'Pausa Longa',
+            focusTime: 'TEMPO DE FOCO',
+            breakTime: 'TEMPO DE PAUSA',
+            start: 'INICIAR',
+            pause: 'PAUSAR',
+            reset: 'REINICIAR',
+            fullscreen: 'TELA CHEIA',
+            todayStats: 'Estatísticas de Hoje',
+            dailyGoal: 'Meta Diária',
+            achievements: 'Conquistas',
+            thisWeek: 'Esta Semana',
+            tasks: 'Tarefas',
+            addTaskPlaceholder: 'Adicionar uma tarefa...',
+            noTasks: 'Qual é o seu plano para hoje? Adicione uma tarefa! 🚀',
+            ambientSounds: 'Ambiente',
+            quickSettings: 'Configurações Rápidas',
+            theme: 'Tema',
+            settings: 'Configurações',
+            timerSettings: 'Configurações do Temporizador',
+            focusDuration: 'Duração do Foco (minutos)',
+            shortBreakDuration: 'Pausa Curta (minutos)',
+            longBreakDuration: 'Pausa Longa (minutos)',
+            longBreakInterval: 'Pausa Longa Após (sessões)',
+            automation: 'Automação',
+            autoStartBreaks: 'Iniciar Pausas Automaticamente',
+            autoStartPomodoros: 'Iniciar Pomodoros Automaticamente',
+            soundSettings: 'Configurações de Som',
+            alarmSound: 'Som do Alarme',
+            bell: 'Sino',
+            digital: 'Digital',
+            gentle: 'Suave',
+            alarmVolume: 'Volume do Alarme',
+            goalSettings: 'Configurações de Meta',
+            dailyGoalNumber: 'Meta Diária (pomodoros)',
+            notificationSettings: 'Notificações',
+            browserNotifications: 'Notificações do Navegador',
+            enableNotifications: 'Ativar Notificações',
+            data: 'Dados',
+            clearData: 'Limpar Dados',
+            autoSaveHint: '✓ As alterações são salvas automaticamente',
+            statistics: 'Estatísticas',
+            totalPomodoros: 'Total de Pomodoros',
+            totalTime: 'Tempo Total',
+            currentStreak: 'Sequência Atual',
+            bestStreak: 'Melhor Sequência',
+            pomodoroComplete: 'Pomodoro Concluído!',
+            breakComplete: 'Pausa Concluída!',
+            timeForBreak: 'Hora de fazer uma pausa!',
+            timeToFocus: 'Hora de focar!',
+            goalReached: 'Meta diária alcançada! 🎉',
+            stopTimerFirst: 'O temporizador está ativo. Parar e mudar modo?',
+            shortcuts: 'Atalhos:',
+            startPause: 'Iniciar/Pausar',
+            resetKey: 'Reiniciar',
+            modeSwitch: 'Mudar Modo',
+            fullscreenKey: 'Tela Cheia',
+            wellnessTitle: 'Pausa de Bem-estar',
+            ok: 'OK',
+            sound_rain: 'Chuva',
+            sound_forest: 'Floresta',
+            sound_cafe: 'Café',
+            sound_fire: 'Lareira',
+            sound_waves: 'Ondas',
+            sound_thunder: 'Trovão',
+            sound_wind: 'Vento',
+            sound_crickets: 'Grilos'
+        },
+
+        // ========== RUSSIAN ==========
+        ru: {
+            appTitle: 'Помодоро Таймер',
+            focus: 'Фокус',
+            shortBreak: 'Короткий Перерыв',
+            longBreak: 'Длинный Перерыв',
+            focusTime: 'ВРЕМЯ ФОКУСА',
+            breakTime: 'ВРЕМЯ ПЕРЕРЫВА',
+            start: 'СТАРТ',
+            pause: 'ПАУЗА',
+            reset: 'СБРОС',
+            fullscreen: 'ПОЛНЫЙ ЭКРАН',
+            todayStats: 'Статистика Сегодня',
+            dailyGoal: 'Дневная Цель',
+            achievements: 'Достижения',
+            thisWeek: 'Эта Неделя',
+            tasks: 'Задачи',
+            addTaskPlaceholder: 'Добавить задачу...',
+            noTasks: 'Какой у вас план на сегодня? Добавьте задачу! 🚀',
+            ambientSounds: 'Атмосфера',
+            quickSettings: 'Быстрые Настройки',
+            theme: 'Тема',
+            settings: 'Настройки',
+            timerSettings: 'Настройки Таймера',
+            focusDuration: 'Длительность Фокуса (минуты)',
+            shortBreakDuration: 'Короткий Перерыв (минуты)',
+            longBreakDuration: 'Длинный Перерыв (минуты)',
+            longBreakInterval: 'Длинный Перерыв После (сессий)',
+            automation: 'Автоматизация',
+            autoStartBreaks: 'Автозапуск Перерывов',
+            autoStartPomodoros: 'Автозапуск Помодоро',
+            soundSettings: 'Настройки Звука',
+            alarmSound: 'Звук Будильника',
+            bell: 'Колокол',
+            digital: 'Цифровой',
+            gentle: 'Мягкий',
+            alarmVolume: 'Громкость Будильника',
+            goalSettings: 'Настройки Цели',
+            dailyGoalNumber: 'Дневная Цель (помодоро)',
+            notificationSettings: 'Уведомления',
+            browserNotifications: 'Уведомления Браузера',
+            enableNotifications: 'Включить Уведомления',
+            data: 'Данные',
+            clearData: 'Очистить Данные',
+            autoSaveHint: '✓ Изменения сохраняются автоматически',
+            statistics: 'Статистика',
+            totalPomodoros: 'Всего Помодоро',
+            totalTime: 'Общее Время',
+            currentStreak: 'Текущая Серия',
+            bestStreak: 'Лучшая Серия',
+            pomodoroComplete: 'Помодоро Завершён!',
+            breakComplete: 'Перерыв Завершён!',
+            timeForBreak: 'Время перерыва!',
+            timeToFocus: 'Время сосредоточиться!',
+            goalReached: 'Дневная цель достигнута! 🎉',
+            stopTimerFirst: 'Таймер работает. Остановить и сменить режим?',
+            shortcuts: 'Горячие клавиши:',
+            startPause: 'Старт/Пауза',
+            resetKey: 'Сброс',
+            modeSwitch: 'Сменить Режим',
+            fullscreenKey: 'Полный Экран',
+            wellnessTitle: 'Оздоровительный Перерыв',
+            ok: 'ОК',
+            sound_rain: 'Дождь',
+            sound_forest: 'Лес',
+            sound_cafe: 'Кафе',
+            sound_fire: 'Камин',
+            sound_waves: 'Волны',
+            sound_thunder: 'Гром',
+            sound_wind: 'Ветер',
+            sound_crickets: 'Сверчки'
+        },
+
+        // ========== CHINESE ==========
+        zh: {
+            appTitle: '番茄计时器',
+            focus: '专注',
+            shortBreak: '短休息',
+            longBreak: '长休息',
+            focusTime: '专注时间',
+            breakTime: '休息时间',
+            start: '开始',
+            pause: '暂停',
+            reset: '重置',
+            fullscreen: '全屏',
+            todayStats: '今日统计',
+            dailyGoal: '每日目标',
+            achievements: '成就',
+            thisWeek: '本周',
+            tasks: '任务',
+            addTaskPlaceholder: '添加任务...',
+            noTasks: '今天的计划是什么？添加一个任务吧！🚀',
+            ambientSounds: '环境音',
+            quickSettings: '快速设置',
+            theme: '主题',
+            settings: '设置',
+            timerSettings: '计时器设置',
+            focusDuration: '专注时长（分钟）',
+            shortBreakDuration: '短休息（分钟）',
+            longBreakDuration: '长休息（分钟）',
+            longBreakInterval: '长休息间隔（次）',
+            automation: '自动化',
+            autoStartBreaks: '自动开始休息',
+            autoStartPomodoros: '自动开始番茄钟',
+            soundSettings: '声音设置',
+            alarmSound: '闹钟声音',
+            bell: '铃声',
+            digital: '数字',
+            gentle: '柔和',
+            alarmVolume: '闹钟音量',
+            goalSettings: '目标设置',
+            dailyGoalNumber: '每日目标（番茄数）',
+            notificationSettings: '通知',
+            browserNotifications: '浏览器通知',
+            enableNotifications: '启用通知',
+            data: '数据',
+            clearData: '清除数据',
+            autoSaveHint: '✓ 更改自动保存',
+            statistics: '统计',
+            totalPomodoros: '总番茄数',
+            totalTime: '总时间',
+            currentStreak: '当前连续',
+            bestStreak: '最佳连续',
+            pomodoroComplete: '番茄钟完成！',
+            breakComplete: '休息结束！',
+            timeForBreak: '休息时间到！',
+            timeToFocus: '专注时间到！',
+            goalReached: '每日目标达成！🎉',
+            stopTimerFirst: '计时器正在运行。停止并切换模式？',
+            shortcuts: '快捷键：',
+            startPause: '开始/暂停',
+            resetKey: '重置',
+            modeSwitch: '切换模式',
+            fullscreenKey: '全屏',
+            wellnessTitle: '健康休息',
+            ok: '确定',
+            sound_rain: '雨声',
+            sound_forest: '森林',
+            sound_cafe: '咖啡馆',
+            sound_fire: '壁炉',
+            sound_waves: '海浪',
+            sound_thunder: '雷声',
+            sound_wind: '风声',
+            sound_crickets: '蟋蟀'
+        },
+
+        // ========== JAPANESE ==========
+        ja: {
+            appTitle: 'ポモドーロタイマー',
+            focus: '集中',
+            shortBreak: '短い休憩',
+            longBreak: '長い休憩',
+            focusTime: '集中時間',
+            breakTime: '休憩時間',
+            start: 'スタート',
+            pause: '一時停止',
+            reset: 'リセット',
+            fullscreen: 'フルスクリーン',
+            todayStats: '今日の統計',
+            dailyGoal: '一日の目標',
+            achievements: '実績',
+            thisWeek: '今週',
+            tasks: 'タスク',
+            addTaskPlaceholder: 'タスクを追加...',
+            noTasks: '今日の予定は？タスクを追加しましょう！🚀',
+            ambientSounds: '環境音',
+            quickSettings: 'クイック設定',
+            theme: 'テーマ',
+            settings: '設定',
+            timerSettings: 'タイマー設定',
+            focusDuration: '集中時間（分）',
+            shortBreakDuration: '短い休憩（分）',
+            longBreakDuration: '長い休憩（分）',
+            longBreakInterval: '長い休憩後（セッション数）',
+            automation: '自動化',
+            autoStartBreaks: '休憩を自動開始',
+            autoStartPomodoros: 'ポモドーロを自動開始',
+            soundSettings: 'サウンド設定',
+            alarmSound: 'アラーム音',
+            bell: 'ベル',
+            digital: 'デジタル',
+            gentle: 'やさしい',
+            alarmVolume: 'アラーム音量',
+            goalSettings: '目標設定',
+            dailyGoalNumber: '一日の目標（ポモドーロ数）',
+            notificationSettings: '通知',
+            browserNotifications: 'ブラウザ通知',
+            enableNotifications: '通知を有効にする',
+            data: 'データ',
+            clearData: 'データを削除',
+            autoSaveHint: '✓ 変更は自動保存されます',
+            statistics: '統計',
+            totalPomodoros: '合計ポモドーロ',
+            totalTime: '合計時間',
+            currentStreak: '現在の連続',
+            bestStreak: '最高連続',
+            pomodoroComplete: 'ポモドーロ完了！',
+            breakComplete: '休憩終了！',
+            timeForBreak: '休憩の時間です！',
+            timeToFocus: '集中の時間です！',
+            goalReached: '一日の目標達成！🎉',
+            stopTimerFirst: 'タイマーが動作中です。停止してモードを変更しますか？',
+            shortcuts: 'ショートカット：',
+            startPause: 'スタート/一時停止',
+            resetKey: 'リセット',
+            modeSwitch: 'モード切替',
+            fullscreenKey: 'フルスクリーン',
+            wellnessTitle: 'ウェルネス休憩',
+            ok: 'OK',
+            sound_rain: '雨',
+            sound_forest: '森',
+            sound_cafe: 'カフェ',
+            sound_fire: '暖炉',
+            sound_waves: '波',
+            sound_thunder: '雷',
+            sound_wind: '風',
+            sound_crickets: 'コオロギ'
+        },
+
+        // ========== ARABIC ==========
+        ar: {
+            appTitle: 'مؤقت بومودورو',
+            focus: 'تركيز',
+            shortBreak: 'استراحة قصيرة',
+            longBreak: 'استراحة طويلة',
+            focusTime: 'وقت التركيز',
+            breakTime: 'وقت الاستراحة',
+            start: 'ابدأ',
+            pause: 'إيقاف مؤقت',
+            reset: 'إعادة تعيين',
+            fullscreen: 'ملء الشاشة',
+            todayStats: 'إحصائيات اليوم',
+            dailyGoal: 'الهدف اليومي',
+            achievements: 'الإنجازات',
+            thisWeek: 'هذا الأسبوع',
+            tasks: 'المهام',
+            addTaskPlaceholder: 'أضف مهمة...',
+            noTasks: 'ما هي خطتك لليوم؟ أضف مهمة! 🚀',
+            ambientSounds: 'أصوات محيطة',
+            quickSettings: 'إعدادات سريعة',
+            theme: 'السمة',
+            settings: 'الإعدادات',
+            timerSettings: 'إعدادات المؤقت',
+            focusDuration: 'مدة التركيز (دقائق)',
+            shortBreakDuration: 'استراحة قصيرة (دقائق)',
+            longBreakDuration: 'استراحة طويلة (دقائق)',
+            longBreakInterval: 'استراحة طويلة بعد (جلسات)',
+            automation: 'التشغيل التلقائي',
+            autoStartBreaks: 'بدء الاستراحات تلقائياً',
+            autoStartPomodoros: 'بدء البومودورو تلقائياً',
+            soundSettings: 'إعدادات الصوت',
+            alarmSound: 'صوت التنبيه',
+            bell: 'جرس',
+            digital: 'رقمي',
+            gentle: 'هادئ',
+            alarmVolume: 'مستوى صوت التنبيه',
+            goalSettings: 'إعدادات الهدف',
+            dailyGoalNumber: 'الهدف اليومي (بومودورو)',
+            notificationSettings: 'الإشعارات',
+            browserNotifications: 'إشعارات المتصفح',
+            enableNotifications: 'تفعيل الإشعارات',
+            data: 'البيانات',
+            clearData: 'مسح البيانات',
+            autoSaveHint: '✓ يتم حفظ التغييرات تلقائياً',
+            statistics: 'الإحصائيات',
+            totalPomodoros: 'إجمالي البومودورو',
+            totalTime: 'الوقت الإجمالي',
+            currentStreak: 'السلسلة الحالية',
+            bestStreak: 'أفضل سلسلة',
+            pomodoroComplete: 'اكتمل البومودورو!',
+            breakComplete: 'انتهت الاستراحة!',
+            timeForBreak: 'حان وقت الاستراحة!',
+            timeToFocus: 'حان وقت التركيز!',
+            goalReached: 'تم تحقيق الهدف اليومي! 🎉',
+            stopTimerFirst: 'المؤقت يعمل. إيقاف وتغيير الوضع؟',
+            shortcuts: 'اختصارات:',
+            startPause: 'بدء/إيقاف',
+            resetKey: 'إعادة تعيين',
+            modeSwitch: 'تغيير الوضع',
+            fullscreenKey: 'ملء الشاشة',
+            wellnessTitle: 'استراحة صحية',
+            ok: 'موافق',
+            sound_rain: 'مطر',
+            sound_forest: 'غابة',
+            sound_cafe: 'مقهى',
+            sound_fire: 'مدفأة',
+            sound_waves: 'أمواج',
+            sound_thunder: 'رعد',
+            sound_wind: 'رياح',
+            sound_crickets: 'صراصير الليل'
         }
     },
 
-    // Motivation quotes for English
+    // Motivation quotes for all languages
     motivationQuotes: {
         en: [
             { text: 'The secret of getting ahead is getting started.', author: 'Mark Twain' },
             { text: 'Focus on being productive instead of busy.', author: 'Tim Ferriss' },
             { text: 'Success is the sum of small efforts repeated day in and day out.', author: 'Robert Collier' },
-            { text: 'Focus. Do less, but better.', author: 'Steve Jobs' },
-            { text: 'A journey of a thousand miles begins with a single step.', author: 'Lao Tzu' },
-            { text: 'Discipline is the bridge between goals and accomplishment.', author: 'Jim Rohn' },
-            { text: 'If you can\'t manage your time, you can\'t manage anything.', author: 'Peter Drucker' },
-            { text: 'Excellence is not an act, but a habit.', author: 'Aristotle' }
+            { text: 'The only way to do great work is to love what you do.', author: 'Steve Jobs' }
         ],
         tr: [
             { text: 'Başlamanın sırrı, konuşmayı bırakıp yapmaya başlamaktır.', author: 'Walt Disney' },
             { text: 'Bugün yapabileceğini yarına bırakma.', author: 'Benjamin Franklin' },
             { text: 'Başarı, her gün tekrarlanan küçük çabaların toplamıdır.', author: 'Robert Collier' },
-            { text: 'Odaklan. Az ama iyi yap.', author: 'Steve Jobs' },
-            { text: 'Her uzun yolculuk tek bir adımla başlar.', author: 'Lao Tzu' },
-            { text: 'Disiplin, başarının köprüsüdür.', author: 'Jim Rohn' },
-            { text: 'Zamanını yönetemezsen, hiçbir şeyi yönetemezsin.', author: 'Peter Drucker' },
-            { text: 'Mükemmellik bir eylem değil, bir alışkanlıktır.', author: 'Aristoteles' }
+            { text: 'Odaklan. Az ama iyi yap.', author: 'Steve Jobs' }
+        ],
+        es: [
+            { text: 'El secreto de salir adelante es empezar.', author: 'Mark Twain' },
+            { text: 'Concéntrate en ser productivo, no en estar ocupado.', author: 'Tim Ferriss' }
+        ],
+        fr: [
+            { text: 'Le secret pour avancer est de commencer.', author: 'Mark Twain' },
+            { text: 'Concentrez-vous sur la productivité, pas sur l\'occupation.', author: 'Tim Ferriss' }
+        ],
+        de: [
+            { text: 'Das Geheimnis des Vorankommens ist anzufangen.', author: 'Mark Twain' },
+            { text: 'Konzentriere dich darauf, produktiv zu sein, nicht beschäftigt.', author: 'Tim Ferriss' }
+        ],
+        pt: [
+            { text: 'O segredo de progredir é começar.', author: 'Mark Twain' },
+            { text: 'Concentre-se em ser produtivo, não em estar ocupado.', author: 'Tim Ferriss' }
+        ],
+        ru: [
+            { text: 'Секрет успеха в том, чтобы начать.', author: 'Марк Твен' },
+            { text: 'Сосредоточьтесь на продуктивности, а не на занятости.', author: 'Тим Феррис' }
+        ],
+        zh: [
+            { text: '成功的秘诀就是开始。', author: '马克·吐温' },
+            { text: '专注于提高效率，而不是忙碌。', author: '蒂姆·费里斯' }
+        ],
+        ja: [
+            { text: '先に進む秘訣は、始めることです。', author: 'マーク・トウェイン' },
+            { text: '忙しくなることではなく、生産的になることに集中しよう。', author: 'ティム・フェリス' }
+        ],
+        ar: [
+            { text: 'سر التقدم هو البدء.', author: 'مارك توين' },
+            { text: 'ركز على أن تكون منتجاً لا مشغولاً.', author: 'تيم فيريس' }
         ]
     },
 
@@ -350,6 +817,51 @@ const I18n = {
     init() {
         const savedLang = Storage.get('language', 'en');
         this.setLanguage(savedLang);
+        this.bindDropdown();
+    },
+
+    bindDropdown() {
+        const dropdown = document.getElementById('langDropdown');
+        const toggle = document.getElementById('langToggle');
+        const menu = document.getElementById('langMenu');
+
+        if (!dropdown || !toggle || !menu) return;
+
+        // Toggle dropdown
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+
+        // Language options
+        menu.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const lang = option.dataset.lang;
+                this.setLanguage(lang);
+                dropdown.classList.remove('open');
+            });
+        });
+
+        // Close on outside click
+        document.addEventListener('click', () => {
+            dropdown.classList.remove('open');
+        });
+
+        // Update active state
+        this.updateDropdownActive();
+    },
+
+    updateDropdownActive() {
+        const menu = document.getElementById('langMenu');
+        if (!menu) return;
+
+        menu.querySelectorAll('.lang-option').forEach(option => {
+            option.classList.remove('active');
+            if (option.dataset.lang === this.currentLang) {
+                option.classList.add('active');
+            }
+        });
     },
 
     setLanguage(lang) {
@@ -357,16 +869,26 @@ const I18n = {
         this.currentLang = lang;
         Storage.set('language', lang);
         this.updateUI();
-        document.getElementById('currentLang').textContent = lang.toUpperCase();
+
+        // Update display
+        const currentLangEl = document.getElementById('currentLang');
+        if (currentLangEl) {
+            currentLangEl.textContent = lang.toUpperCase();
+        }
+
+        this.updateDropdownActive();
     },
 
     toggleLanguage() {
-        const newLang = this.currentLang === 'en' ? 'tr' : 'en';
-        this.setLanguage(newLang);
+        // For backwards compatibility - cycles through languages
+        const langs = Object.keys(this.translations);
+        const currentIndex = langs.indexOf(this.currentLang);
+        const nextIndex = (currentIndex + 1) % langs.length;
+        this.setLanguage(langs[nextIndex]);
     },
 
     t(key) {
-        return this.translations[this.currentLang][key] || this.translations['en'][key] || key;
+        return this.translations[this.currentLang]?.[key] || this.translations['en']?.[key] || key;
     },
 
     updateUI() {
@@ -385,10 +907,13 @@ const I18n = {
         // Update page title based on timer state
         if (typeof App !== 'undefined' && App.timer) {
             App.updateTitle();
-            // Also update timer label based on current mode
             App.updateModeUI(App.currentMode);
-            // Update daily motivation quote
             App.updateDailyQuote();
+        }
+
+        // Re-render tasks to update noTasks message
+        if (typeof Tasks !== 'undefined') {
+            Tasks.render();
         }
     }
 };

@@ -42,9 +42,24 @@
                 <h1 class="app-title" data-i18n="appTitle">Pomodoro Timer</h1>
             </div>
             <div class="header-right">
-                <button class="icon-btn" id="langToggle" title="Language">
-                    <span id="currentLang">EN</span>
-                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="icon-btn lang-btn" id="langToggle" title="Language">
+                        <span id="currentLang">EN</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="lang-menu" id="langMenu">
+                        <div class="lang-option" data-lang="en">🇬🇧 English</div>
+                        <div class="lang-option" data-lang="tr">🇹🇷 Türkçe</div>
+                        <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+                        <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+                        <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+                        <div class="lang-option" data-lang="pt">🇧🇷 Português</div>
+                        <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
+                        <div class="lang-option" data-lang="zh">🇨🇳 中文</div>
+                        <div class="lang-option" data-lang="ja">🇯🇵 日本語</div>
+                        <div class="lang-option" data-lang="ar">🇸🇦 العربية</div>
+                    </div>
+                </div>
                 <button class="icon-btn" id="themeToggle" title="Toggle Theme">
                     <span id="themeIcon">🌙</span>
                 </button>
