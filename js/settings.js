@@ -57,22 +57,56 @@ const Settings = {
         if (notifBtn) {
             notifBtn.addEventListener('click', async () => {
                 const granted = await Notifications.requestPermission();
-                if (granted) {
-                    alert(I18n.currentLang === 'tr' ? 'Bildirimler etkinleştirildi!' : 'Notifications enabled!');
+                if (granted && typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: I18n.t('notificationsEnabled'),
+                        showConfirmButton: false,
+                        timer: 1500,
+                        background: 'var(--bg-secondary)',
+                        color: 'var(--text-primary)'
+                    });
                 }
             });
         }
 
-        // Clear data
+        // Clear data with SweetAlert2
         const clearBtn = document.getElementById('clearData');
         if (clearBtn) {
             clearBtn.addEventListener('click', () => {
-                const confirmMsg = I18n.currentLang === 'tr'
-                    ? 'Tüm veriler silinecek. Emin misiniz?'
-                    : 'All data will be deleted. Are you sure?';
-                if (confirm(confirmMsg)) {
-                    Storage.clearAll();
-                    location.reload();
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        title: I18n.t('clearDataTitle'),
+                        text: I18n.t('clearDataText'),
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#ef4444',
+                        cancelButtonColor: '#6b7280',
+                        confirmButtonText: I18n.t('clearDataConfirm'),
+                        cancelButtonText: I18n.t('clearDataCancel'),
+                        background: 'var(--bg-secondary)',
+                        color: 'var(--text-primary)'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Storage.clearAll();
+                            Swal.fire({
+                                icon: 'success',
+                                title: I18n.t('clearDataSuccess'),
+                                showConfirmButton: false,
+                                timer: 1500,
+                                background: 'var(--bg-secondary)',
+                                color: 'var(--text-primary)'
+                            }).then(() => {
+                                location.reload();
+                            });
+                        }
+                    });
+                } else {
+                    // Fallback for when Swal is not loaded
+                    if (confirm(I18n.t('clearDataText'))) {
+                        Storage.clearAll();
+                        location.reload();
+                    }
                 }
             });
         }
