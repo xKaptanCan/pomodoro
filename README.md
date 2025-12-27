@@ -82,6 +82,13 @@
 ### 🌐 Internationalization
 - **English** (Default)
 - **Turkish** (Türkçe)
+- **Español**
+- **Français**
+- **Deutsch**
+- **Português**
+- **Русский**
+- **中文**
+- **日本語**
 - Easy to add more languages
 
 ### 📱 PWA Features
